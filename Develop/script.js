@@ -47,15 +47,51 @@ var passwordCase
       passwordCase = false;
       return passwordCase;
     }
-    else {
-      window.alert("Please enter YES or NO");
+    // If user doesn't enter anything
+    else if (caseInput === null) {
+      window.alert("Please enter either YES or NO");
       promptCase();
     }
-    console.log(passwordCase);
+    // If user enters anything else
+    else {
+      window.alert("Please enter either YES or NO");
+      promptCase();
+    }
   }
 
   promptCase();
 
+// Does the user want numbers?
+var passwordNumbers
+
+  function promptNumbers() {
+    var numbersInput = window.prompt("Would you like numbers in your password? (YES or NO)");
+      // Changes input to lower case to make it easier to process
+      numbersInput = numbersInput.toLowerCase();
+
+      // If user wants upper case letters in password
+      if (numbersInput === "yes") {
+        passwordNumbers = true;
+        return passwordNumbers;
+      }
+      // If user doesn't want upper case letters in password
+      else if (numbersInput === "no") {
+        passwordNumbers = false;
+        return passwordNumbers;
+      }
+      // If user doesn't enter anything
+      else if (numbersInput === null) {
+        window.alert("Please enter either YES or NO");
+        promptNumbers();
+      }
+      // If user enters anything else
+      else {
+        window.alert("Please enter either YES or NO");
+        promptNumbers();
+      }
+  }
+
+  promptNumbers();
 // Generate Password function
 function generatePassword() {
 
