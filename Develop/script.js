@@ -69,12 +69,12 @@ var passwordNumbers
       // Changes input to lower case to make it easier to process
       numbersInput = numbersInput.toLowerCase();
 
-      // If user wants upper case letters in password
+      // If user wants numbers in password
       if (numbersInput === "yes") {
         passwordNumbers = true;
         return passwordNumbers;
       }
-      // If user doesn't want upper case letters in password
+      // If user doesn't want numbers in password
       else if (numbersInput === "no") {
         passwordNumbers = false;
         return passwordNumbers;
@@ -92,6 +92,39 @@ var passwordNumbers
   }
 
   promptNumbers();
+
+
+// Does the user want special characters?
+var passwordSpecial
+
+function promptSpecial() {
+  var specialInput = window.prompt("Would you like numbers in your password? (YES or NO)");
+      // Changes input to lower case to make it easier to process
+      specialInput = specialInput.toLowerCase();
+
+      // If user wants special characters in password
+      if (specialInput === "yes") {
+        passwordSpecial = true;
+        return passwordSpecial;
+      }
+      // If user doesn't want special characters in password
+      else if (specialInput === "no") {
+        passwordSpecial = false;
+        return passwordSpecial;
+      }
+      // If user doesn't enter anything
+      else if (specialInput === null) {
+        window.alert("Please enter either YES or NO");
+        promptSpecial();
+      }
+      // If user enters anything else
+      else {
+        window.alert("Please enter either YES or NO");
+        promptSpecial();
+      }
+}
+promptSpecial();
+
 // Generate Password function
 function generatePassword() {
 
