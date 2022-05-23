@@ -26,8 +26,6 @@ var passwordLength
     }
   }
 
-  promptLength();
-
 // Get uppercase or lowercase
 var passwordCase
 
@@ -59,8 +57,6 @@ var passwordCase
     }
   }
 
-  promptCase();
-
 // Does the user want numbers?
 var passwordNumbers
 
@@ -90,8 +86,6 @@ var passwordNumbers
         promptNumbers();
       }
   }
-
-  promptNumbers();
 
 
 // Does the user want special characters?
@@ -123,11 +117,56 @@ function promptSpecial() {
         promptSpecial();
       }
 }
-promptSpecial();
 
 // Generate Password function
 function generatePassword() {
+  // Runs prompt functions
+  promptLength();
+  console.log(promptLength);
+  promptCase();
+  console.log(promptCase);
+  promptNumbers();
+  console.log(promptNumbers);
+  promptSpecial();
+  console.log(promptSpecial);
 
+
+  // Character type declarations
+  var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
+  var numbersChar = "1234567890";
+  var specialChar = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+
+  // By default, password is just made up of lowercase letters
+  var password = lowercaseChar;
+  // If user wants to add uppercase letters, numbers, and special characters
+  if (promptCase && promptNumbers && promptSpecial) {
+    password += uppercaseChar + numbersChar + specialChar;
+  }
+  // If user wants to add just uppercase letters and numbers
+  else if (promptCase && promptNumbers) {
+    password += uppercaseChar + numbersChar;
+  }
+  // If user wants to add just uppercase letters and special characters
+  else if (promptCase && promptSpecial) {
+    password += uppercaseChar + specialChar;
+  }
+  // If user wants to add just upper case letters
+  else if (promptCase) {
+    password += uppercaseChar;
+  }
+  // If user wants to add just numbers and special characters
+  else if (promptNumbers && promptSpecial) {
+    password += numbersChar + specialChar;
+  }
+  // If user wants to add just numbers
+  else if (promptNumbers) {
+    password += numbersChar;
+  }
+  // If user just wants special characters
+  else {
+    password += specialChar;
+  }
 }
 
 // Get references to the #generate element
