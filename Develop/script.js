@@ -122,13 +122,13 @@ function promptSpecial() {
 function generatePassword() {
   // Runs prompt functions
   promptLength();
-  console.log(promptLength);
+  console.log(passwordLength);
   promptCase();
-  console.log(promptCase);
+  console.log(passwordCase);
   promptNumbers();
-  console.log(promptNumbers);
+  console.log(passwordNumbers);
   promptSpecial();
-  console.log(promptSpecial);
+  console.log(passwordSpecial);
 
 
   // Character type declarations
@@ -138,35 +138,43 @@ function generatePassword() {
   var specialChar = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
   // By default, password is just made up of lowercase letters
-  var password = lowercaseChar;
+  var password = "";
+  var characters = lowercaseChar;
   // If user wants to add uppercase letters, numbers, and special characters
-  if (promptCase && promptNumbers && promptSpecial) {
-    password += uppercaseChar + numbersChar + specialChar;
+  if (passwordCase && passwordNumbers && passwordSpecial) {
+    characters += uppercaseChar + numbersChar + specialChar;
   }
   // If user wants to add just uppercase letters and numbers
-  else if (promptCase && promptNumbers) {
-    password += uppercaseChar + numbersChar;
+  else if (passwordCase && passwordNumbers) {
+    characters += uppercaseChar + numbersChar;
   }
   // If user wants to add just uppercase letters and special characters
-  else if (promptCase && promptSpecial) {
-    password += uppercaseChar + specialChar;
+  else if (passwordCase && passwordSpecial) {
+    characters += uppercaseChar + specialChar;
   }
   // If user wants to add just upper case letters
-  else if (promptCase) {
-    password += uppercaseChar;
+  else if (passwordCase) {
+    characters += uppercaseChar;
   }
   // If user wants to add just numbers and special characters
-  else if (promptNumbers && promptSpecial) {
-    password += numbersChar + specialChar;
+  else if (passwordNumbers && passwordSpecial) {
+    characters += numbersChar + specialChar;
   }
   // If user wants to add just numbers
-  else if (promptNumbers) {
-    password += numbersChar;
+  else if (passwordNumbers) {
+    characters += numbersChar;
   }
   // If user just wants special characters
   else {
-    password += specialChar;
+    characters += specialChar;
   }
+
+  // Generate random password meeting requested conditions of user
+  for (var i = 0; i < passwordLength; i++) {
+    password += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  console.log(password);
+  return password;
 }
 
 // Get references to the #generate element
